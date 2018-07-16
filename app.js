@@ -112,4 +112,4 @@ document.querySelector('#back').addEventListener("click", function() {
 })
 
 // init popup
-switchToLanding()
+setTimeout(switchToLanding, 500)
