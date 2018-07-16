@@ -14,10 +14,12 @@ const error_container = document.querySelector('.error_container');
 const result_El = document.querySelector('#result');
 const backButton = document.querySelector('#back');
 
+document.querySelector('body').style.height = `${window.innerHeight}px`
+
 function switchToLanding() {
 
   // searchbar
-  searchbar.style.top = "10vh";
+  searchbar.style.top = "100px";
 
   // giraffe
   giraffe_container.style.bottom = "0px";
@@ -112,4 +114,4 @@ document.querySelector('#back').addEventListener("click", function() {
 })
 
 // init popup
-setTimeout(switchToLanding, 500)
+switchToLanding()
