@@ -27,9 +27,9 @@ body {
   bottom: 100px;
   height: 340px;
   width: 150px;
-  left: 35%;
+  left: 50%;
   transform-origin: bottom;
-  transform: scale(1.25);
+  transform: translate(-50%, 0) scale(1.25);
   pointer-events: none;
 }
 
@@ -132,13 +132,13 @@ body {
 
 @keyframes giraffe-popup {
   0% {
-    transform: translateY(450px) scale(1.25)
+    transform: translate(-50%, 450px) scale(1.25)
   }
   70% {
-    transform: translateY(-10px) scale(1.25)
+    transform: translate(-50%, -10px) scale(1.25)
   }
   100% {
-    transform: translateY(0px) scale(1.25)
+    transform: translate(-50%, 0px) scale(1.25)
   }
 }
 
@@ -206,10 +206,10 @@ body {
 
 @keyframes giraffe-sinks {
   20% {
-    transform: translateY(-10px) scale(1.25);
+    transform: translate(-50%, -10px) scale(1.25);
   }
   100% {
-    transform: translateY(450px) scale(1.25);
+    transform: translate(-50%, 450px) scale(1.25);
   }
 }
 
