@@ -32,6 +32,7 @@ function randomIntFromInterval(min, max) {
 }
 
 function runClouds() {
+  console.log("hello");
   const clouds = Array.from(document.getElementsByClassName('cloud'));
   clouds.forEach((cloud, index) => {
     if (index % 3 === 0) {
