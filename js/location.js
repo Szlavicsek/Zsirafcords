@@ -35,14 +35,28 @@ function codeAddress() {
       let lng = results[0].geometry.location.lng().toFixed(5)
 
       // parse coordinates in darksky api get request
-      getWeather(lat, lng)
-        .then(res => {
+      // getWeather(lat, lng)
+      //   .then(res => {
+      //     phase1_hideGiraffeAndMoveSearchbarUp();
+      //     setTimeout(phase2_showCarouselAndPopupGiraffe, 1000)
+      //     paint(res)
+      //     console.log(res)
+      //   })
+      //   .catch(err => console.log(err))
+      $.ajax({
+        method: 'GET',
+        url: `http://cors.io/?https://api.darksky.net/forecast/7785c047482aadebef9226ce3e1340aa/${lat},${lng}?lang=hu&units=si&extend=hourly&exclude=minutely,alerts,flags`,
+        dataType: 'jsonp', //change the datatype to 'jsonp' works in most cases
+        success: (res) => {
           phase1_hideGiraffeAndMoveSearchbarUp();
           setTimeout(phase2_showCarouselAndPopupGiraffe, 1000)
           paint(res)
-          console.log(res)
+          console.log(res);
+        },
+        error: ((err) => {
+          console.log(err);
         })
-        .catch(err => console.log(err))
+      })
 
       // setTimeout(function() {
       //   switchToResult()
@@ -65,11 +79,11 @@ function codeAddress() {
 // component functions
 
 // request for darksky weather data
-async function getWeather(lat, lng) {
-  const response = await fetch(`http://cors.io/?https://api.darksky.net/forecast/7785c047482aadebef9226ce3e1340aa/${lat},${lng}?lang=hu&units=si&extend=hourly&exclude=minutely,alerts,flags`)
-  const responseData = await response.json();
-  return responseData;
-}
+// async function getWeather(lat, lng) {
+//   const response = await fetch(`http://cors.io/?https://api.darksky.net/forecast/7785c047482aadebef9226ce3e1340aa/${lat},${lng}?lang=hu&units=si&extend=hourly&exclude=minutely,alerts,flags`)
+//   const responseData = await response.json();
+//   return responseData;
+// }
 
 // day converter
 function getDay(stamp, index) {
