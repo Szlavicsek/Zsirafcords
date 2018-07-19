@@ -34,19 +34,12 @@ function codeAddress() {
       let lat = results[0].geometry.location.lat().toFixed(5)
       let lng = results[0].geometry.location.lng().toFixed(5)
 
-      // parse coordinates in darksky api get request
-      // getWeather(lat, lng)
-      //   .then(res => {
-      //     phase1_hideGiraffeAndMoveSearchbarUp();
-      //     setTimeout(phase2_showCarouselAndPopupGiraffe, 1000)
-      //     paint(res)
-      //     console.log(res)
-      //   })
-      //   .catch(err => console.log(err))
+      // parse coordinates in darksky api get request (jQuery ajax for handling CORS)
+
       $.ajax({
         method: 'GET',
         url: `https://api.darksky.net/forecast/7785c047482aadebef9226ce3e1340aa/${lat},${lng}?lang=hu&units=si&extend=hourly&exclude=minutely,alerts,flags`,
-        dataType: 'jsonp', //change the datatype to 'jsonp' works in most cases
+        dataType: 'jsonp',
         success: (res) => {
           phase1_hideGiraffeAndMoveSearchbarUp();
           setTimeout(phase2_showCarouselAndPopupGiraffe, 1000)

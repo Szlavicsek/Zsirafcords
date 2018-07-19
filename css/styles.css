@@ -36,7 +36,7 @@ body {
 
 .cloud {
   position: absolute;
-  top: 87vh;
+  bottom: -35px;
   transform: translateX(-100%) var(--cloud-scale);
 }
 
