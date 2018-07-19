@@ -66,7 +66,7 @@ function codeAddress() {
 
 // request for darksky weather data
 async function getWeather(lat, lng) {
-  const response = await fetch(`https://api.darksky.net/forecast/7785c047482aadebef9226ce3e1340aa/${lat},${lng}?lang=hu&units=si&extend=hourly&exclude=minutely,alerts,flags`)
+  const response = await fetch(`http://cors.io/?https://api.darksky.net/forecast/7785c047482aadebef9226ce3e1340aa/${lat},${lng}?lang=hu&units=si&extend=hourly&exclude=minutely,alerts,flags`)
   const responseData = await response.json();
   return responseData;
 }

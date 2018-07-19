@@ -31,7 +31,7 @@ function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-(_ => {
+function runClouds() {
   const clouds = Array.from(document.getElementsByClassName('cloud'));
   clouds.forEach((cloud, index) => {
     if (index % 3 === 0) {
@@ -43,4 +43,5 @@ function randomIntFromInterval(min, max) {
     }
     cloud.style.animation = `scroll ${randomIntFromInterval(10, 40)}s linear infinite`
   })
-})();
+};
+runClouds()
