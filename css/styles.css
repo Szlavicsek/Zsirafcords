@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+:root {
+  --cloud-scale: scale(1)
+}
+
+*::selection {
+  background-color: transparent;
+}
+
+body {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background: url("yellow-gradient-background.png");
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+/*************** result styles BEGIN ***************/
+
+@media only screen and (max-height: 500px) {
+  :root {
+    --giraffe-scale: scale(1.1);
+    --searchbar-height: 50px
+  }
+  .searchbar input {
+    font-size: 1.5rem;
+  }
+  .pac-container {
+    margin-top: 0px;
+  }
+}
+
+/* clouds */
+
+.cloud {
+  position: absolute;
+  bottom: -30px;
+  transform: translateX(-100%) var(--cloud-scale);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(-100%) var(--cloud-scale);
+  }
+  to {
+    transform: translateX(100vw) var(--cloud-scale);
+  }
+}
+
+@media only screen and (max-height: 560px) {
+  :root {
+    --cloud-scale: scale(0.8)
+  }
+}

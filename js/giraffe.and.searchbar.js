@@ -4,7 +4,6 @@ const giraffe_head = document.querySelector('.giraffe-head');
 const giraffe_ear = document.querySelector('.giraffe-ear');
 const giraffe_horn1 = document.querySelector('#horn1');
 const giraffe_horn2 = document.querySelector('#horn2');
-const trigger = document.querySelector('.trigger')
 
 const search_trigger = document.querySelector('.trigger');
 const searchbar = document.querySelector('.searchbar-wrapper');
@@ -12,14 +11,24 @@ const search_icon = document.querySelector('.search-icon');
 const input_field = document.querySelector('#my-address');
 const error_container = document.querySelector('.error_container');
 const result_El = document.querySelector('#result');
-const backButton = document.querySelector('#back');
 
 document.querySelector('body').style.height = `${window.innerHeight}px`
 
-function switchToLanding() {
 
-  // searchbar
-  searchbar.style.top = "100px";
+function phase0_showLandingPage() {
+
+  // adjust searchbar distance from top to innerHeight
+  switch (true) {
+    case window.innerHeight > 600:
+      searchbar.style.top = "100px";
+      break;
+    case window.innerHeight <= 500:
+      searchbar.style.top = "40px";
+      break;
+    case window.innerHeight <= 600:
+      searchbar.style.top = "70px";
+      break;
+  }
 
   // giraffe
   giraffe_container.style.bottom = "0px";
@@ -38,7 +47,7 @@ function switchToLanding() {
 
   // remove popups and add giraffe loops
   setTimeout(function() {
-    trigger.classList.toggle("disabled");
+    search_trigger.classList.toggle("disabled");
 
     // giraffe
     giraffe_container.classList.remove("giraffe-popup");
@@ -54,31 +63,35 @@ function switchToLanding() {
     giraffe_horn1.classList.add("horn-loop");
     giraffe_horn2.classList.add("horn-loop");
   }, 1100);
-
-  // add button loop
-  setTimeout(function() {
-    trigger.classList.add("button-loop")
-  }, 2000)
 };
 
-function switchToResult() {
+
+function phase1_hideGiraffeAndMoveSearchbarUp() {
 
   // giraffe sink classes
   giraffe_container.classList.add("giraffe-sinks");
   giraffe_head.classList.add("giraffe-head-sinks");
 
-  // searchbar collapses
-  searchbar.style.width = `${search_icon.offsetHeight}px`;
-
-  // make giraffe hidden
-  setTimeout(function() {
-    giraffe_container.style.bottom = "-450px"
-  }, 950);
+  // searchbar shrinks
+  search_icon.style.transition = "0.8s";
+  searchbar.style.height = "40px";
+  search_icon.style.height = "40px";
+  search_icon.style.width = "40px";
+  input_field.style.width = "calc(100% - 60px)";
+  input_field.style.marginLeft = "20px";
 
   // searchbar moves back up
   setTimeout(function() {
-    searchbar.style.top = "-100px";
-  }, 600);
+    searchbar.style.top = "25px";
+    input_field.style.fontSize = "1rem";
+    searchbar.style.width = "90%";
+  }, 200);
+
+  // make giraffe hidden
+  setTimeout(function() {
+    giraffe_container.style.bottom = "-450px";
+    // searchbar.style.backgroundColor = "rgba(0, 0, 0, 0.2)"
+  }, 950);
 
   // remove horn loop
   setTimeout(function() {
@@ -88,12 +101,48 @@ function switchToResult() {
 
   // remove some more stuff
   setTimeout(function() {
-    trigger.classList.toggle("disabled");
+    search_trigger.classList.toggle("disabled");
     giraffe_container.classList.remove("giraffe-sinks");
     giraffe_head.classList.remove("giraffe-head-sinks");
     giraffe_ear.classList.remove("ear-loop");
   }, 1100);
 };
+
+function phase2_showCarouselAndPopupGiraffe() {
+  document.querySelector('#demos').style.opacity = "1";
+  setTimeout(function() {
+    // giraffe
+    $(':root').css('--giraffe-scale', 'scale(1)');
+    giraffe_container.style.bottom = "-150px";
+    giraffe_container.style.left = "50px";
+    giraffe_container.classList.add("giraffe-popup");
+    giraffe_head.classList.add("giraffe-head-popup");
+
+    // ear and horn
+    giraffe_ear.classList.add("ear-popup");
+    giraffe_horn1.classList.add("giraffe-horn1-popup");
+    giraffe_horn2.classList.add("giraffe-horn2-popup");
+
+    // remove popups and add giraffe loops
+    setTimeout(function() {
+      search_trigger.classList.toggle("disabled");
+
+      // giraffe
+      giraffe_container.classList.remove("giraffe-popup");
+      giraffe_head.classList.remove("giraffe-head-popup");
+
+      // ear
+      giraffe_ear.classList.remove("ear-popup");
+      giraffe_ear.classList.add("ear-loop");
+
+      // horn
+      giraffe_horn1.classList.remove("giraffe-horn1-popup");
+      giraffe_horn2.classList.remove("giraffe-horn2-popup");
+      giraffe_horn1.classList.add("horn-loop");
+      giraffe_horn2.classList.add("horn-loop");
+    }, 1100);
+  }, 1500)
+}
 
 // EVENT LISTENERS
 
@@ -103,15 +152,5 @@ search_trigger.addEventListener("click", function() {
   }
 });
 
-document.querySelector('#back').addEventListener("click", function() {
-  result_El.style.opacity = "0";
-  backButton.style.opacity = "0";
-  input_field.value = "";
-  switchToLanding();
-  setTimeout(function() {
-    input_field.focus();
-  }, 1000)
-})
-
 // init popup
-switchToLanding()
+phase0_showLandingPage()

@@ -1,0 +1,149 @@
+/*     carousel settings     */
+
+#demos {
+  min-width: 100%;
+  min-height: 100%;
+  background: url("blue-gradient-background.png") center center fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+.owl-carousel {
+  color: whitesmoke
+}
+
+.owl-item {
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 90vh;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.owl-item h4 {
+  text-align: center;
+}
+
+/*     carousel styles END     */
+
+/*     day-info styles BEGIN     */
+
+.single-day-container {
+  border-radius: 10px;
+}
+
+.info-container {
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  color: whitesmoke;
+}
+
+.info-napkozben {
+  transition: opacity 0.4s;
+  transition-delay: 0.1s;
+}
+
+.info-este {
+  top: 40%;
+  transition: opacity 0.4s;
+  transition-delay: 0.3s;
+}
+
+.day-data {}
+
+.dayname {
+  margin-left: 5px;
+}
+
+.day {
+  /* font-size: 1.5rem; */
+}
+
+.napszak {
+  /* font-size: 1rem; */
+  color: rgba(255, 255, 255, 0.7)
+}
+
+.temp-symbol {
+  margin-right: 10px;
+  height: 2rem;
+  width: 15px;
+}
+
+.celsius-container {
+  margin-left: 20px;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.other-details-container {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.precipitation, .wind, .uv {
+  display: flex;
+}
+
+.symbol g {
+  fill: whitesmoke;
+}
+
+.precipitation-symbol {
+  width: 15px;
+  height: 1.5rem;
+}
+
+.wind-symbol {
+  width: 40px;
+  height: 1.5rem;
+}
+
+.precipitation .detail-data {
+  margin-left: 31px;
+}
+
+.uv .detail-data {
+  margin-left: 29px;
+}
+
+.wind .detail-data {
+  margin-left: 7px;
+}
+
+.weather-icon {
+  position: absolute;
+  width: 60%;
+  height: 70%;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 400px) {
+  .weather-icon {
+    width: 45%;
+    top: 60%;
+  }
+}
+
+.weather-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.weather-icon svg g {
+  fill: whitesmoke;
+}
+
+@media only screen and (max-height: 500px) {
+  .info-container {
+    height: 38%;
+  }
+  .info-este {
+    top: 40%;
+  }
+}
