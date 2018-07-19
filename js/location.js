@@ -45,7 +45,7 @@ function codeAddress() {
       //   .catch(err => console.log(err))
       $.ajax({
         method: 'GET',
-        url: `http://cors.io/?https://api.darksky.net/forecast/7785c047482aadebef9226ce3e1340aa/${lat},${lng}?lang=hu&units=si&extend=hourly&exclude=minutely,alerts,flags`,
+        url: `https://api.darksky.net/forecast/7785c047482aadebef9226ce3e1340aa/${lat},${lng}?lang=hu&units=si&extend=hourly&exclude=minutely,alerts,flags`,
         dataType: 'jsonp', //change the datatype to 'jsonp' works in most cases
         success: (res) => {
           phase1_hideGiraffeAndMoveSearchbarUp();
