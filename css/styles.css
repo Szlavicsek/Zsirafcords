@@ -32,6 +32,84 @@ body {
   }
 }
 
+/* loader */
+
+.pulse {
+  position: absolute;
+  top: -228px;
+  width: 500px;
+  height: 500px;
+  transform: scale(1);
+  display: none
+}
+
+.pulse-right {
+  left: -169px;
+}
+
+.pulse-left {
+  left: -160px;
+}
+
+/* Pulse Design */
+
+svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+circle {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+  stroke-location: inside;
+  stroke: #FB4322;
+  stroke-width: 1px;
+  transform-origin: center;
+  transform: scale(0.01);
+}
+
+.pulsing-animation-active {
+  animation: pulse 2s linear infinite;
+}
+
+/* Pulse Animation */
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(0.01);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+/* Pulse Application */
+
+circle.still {
+  animation: none;
+}
+
+circle:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+circle:nth-child(3) {
+  animation-delay: 1s;
+}
+
+circle:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+circle:nth-child(5) {
+  animation-delay: 2s;
+}
+
 /* clouds */
 
 .cloud {

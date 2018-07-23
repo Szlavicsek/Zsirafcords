@@ -1,4 +1,4 @@
-const doc_body = document.querySelector('body');
+// const doc_body = document.querySelector('body');
 const giraffe_container = document.querySelector('.giraffe');
 const giraffe_head = document.querySelector('.giraffe-head');
 const giraffe_ear = document.querySelector('.giraffe-ear');
@@ -11,6 +11,8 @@ const search_icon = document.querySelector('.search-icon');
 const input_field = document.querySelector('#my-address');
 const error_container = document.querySelector('.error_container');
 const result_El = document.querySelector('#result');
+
+const carousel = document.querySelector("#demos");
 
 document.querySelector('body').style.height = `${window.innerHeight}px`
 
@@ -141,7 +143,7 @@ function phase2_showCarouselAndPopupGiraffe() {
       giraffe_horn1.classList.add("horn-loop");
       giraffe_horn2.classList.add("horn-loop");
     }, 1100);
-  }, 1500)
+  }, 500)
 }
 
 // EVENT LISTENERS

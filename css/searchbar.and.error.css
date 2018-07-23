@@ -85,7 +85,7 @@
   float: right;
   background-color: var(--searchicon-bgc);
   border-radius: 500px;
-  transition: 0.15s;
+  transition: 0.8s;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
@@ -152,7 +152,6 @@ svg {
     font-size: 1.5rem;
     width: calc(100% - 90px);
   }
-  cursor: pointer;
   .pac-container {
     margin-top: 0px;
   }
