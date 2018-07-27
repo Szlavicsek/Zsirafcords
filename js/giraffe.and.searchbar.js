@@ -162,7 +162,9 @@ search_trigger.addEventListener("click", function() {
 });
 
 window.addEventListener("resize", function() {
-  document.querySelector('body').style.height = `${window.innerHeight}px`
+  if (window.innerHeight > 350) {
+    document.querySelector('body').style.height = `${window.innerHeight}px`
+  }
 })
 
 // init popup
