@@ -67,7 +67,7 @@ circle {
   vector-effect: non-scaling-stroke;
   stroke-location: inside;
   stroke: #FB4322;
-  stroke-width: 1px;
+  stroke-width: 2px;
   transform-origin: center;
   transform: scale(0.01);
 }
