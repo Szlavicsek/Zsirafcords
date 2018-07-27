@@ -45,28 +45,26 @@ function codeAddress() {
           pulsing_circles.forEach(circle => circle.classList.add("pulsing-animation-active"))
         },
         success: (res) => {
-          setTimeout(function() {
-            if (!carousel.classList.contains("active")) {
-              carousel.classList.add("active");
-              phase1_hideGiraffeAndMoveSearchbarUp();
-              setTimeout(phase2_showCarouselAndPopupGiraffe, 1000);
-              paintCarouselItem(res);
-            } else {
-              paintCarouselItem(res)
-              $(".owl-carousel").trigger("to.owl.carousel", [0, 500, true]);
-              carousel_inners[0].classList.add("fade-in");
-              setTimeout(function() {
-                carousel_inners[0].classList.remove("fade-in");
-              }, 1000)
-            }
+          if (!carousel.classList.contains("active")) {
+            carousel.classList.add("active");
+            phase1_hideGiraffeAndMoveSearchbarUp();
+            setTimeout(phase2_showCarouselAndPopupGiraffe, 1000);
+            paintCarouselItem(res);
+          } else {
+            paintCarouselItem(res)
+            $(".owl-carousel").trigger("to.owl.carousel", [0, 500, true]);
+            carousel_inners[0].classList.add("fade-in");
             setTimeout(function() {
-              pulsing_containers.forEach(pulse => pulse.style.opacity = "0")
-              setTimeout(function() {
-                pulsing_circles.forEach(circle => circle.classList.remove("pulsing-animation-active"));
-                pulsing_containers.forEach(pulse => pulse.style.display = "none")
-              }, 1000)
+              carousel_inners[0].classList.remove("fade-in");
             }, 1000)
-          }, 1000)
+          }
+          setTimeout(function() {
+            pulsing_containers.forEach(pulse => pulse.style.opacity = "0")
+            setTimeout(function() {
+              pulsing_circles.forEach(circle => circle.classList.remove("pulsing-animation-active"));
+              pulsing_containers.forEach(pulse => pulse.style.display = "none")
+            }, 1500)
+          }, 1500)
         },
         error: ((err) => {
           searchbar.style.border = "2px solid red";
