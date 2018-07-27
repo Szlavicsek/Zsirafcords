@@ -228,7 +228,7 @@ function paintCarouselItem(data) {
           <span class="detail-icon">UV</span>
         </div>
         <div class="detail-datas">
-          <div class="detail precip">${data.daily.data[index].precipIntensity.toFixed(1)} mm</div>
+          <div class="detail precip">${data.daily.data[index].precipIntensity.toFixed(1)*4} mm</div>
           <div class="detail wind">${data.daily.data[index].windSpeed.toFixed(1)} km/h</div>
           <div class="detail uv">${data.daily.data[index].uvIndex}</div>
         </div>
