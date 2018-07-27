@@ -15,14 +15,16 @@
 
 .error_container {
   position: absolute;
-  top: -30px;
+  top: 0;
+  transform: translateY(-100%);
   width: 100%;
-  transition: top 0.5s;
+  transition: transform 0.5s;
+  z-index: 100
 }
 
 .error_message {
   text-align: center;
-  height: 30px;
+  height: auto;
   margin: 0px auto;
   background-color: red;
   color: white
@@ -94,10 +96,6 @@
   clear: both;
 }
 
-.search-icon:hover {
-  background-color: #fff;
-}
-
 .search-icon:active {
   background-color: rgba(0, 0, 0, 0.05);
 }
@@ -154,5 +152,11 @@ svg {
   }
   .pac-container {
     margin-top: 0px;
+  }
+}
+
+@media (hover:hover) {
+  .search-icon:hover {
+    background-color: #fff;
   }
 }

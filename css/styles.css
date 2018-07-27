@@ -40,7 +40,8 @@ body {
   width: 500px;
   height: 500px;
   transform: scale(1);
-  display: none
+  display: none;
+  transition: 0.5s all;
 }
 
 .pulse-right {

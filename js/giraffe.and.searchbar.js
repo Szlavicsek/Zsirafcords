@@ -13,6 +13,10 @@ const error_container = document.querySelector('.error_container');
 const result_El = document.querySelector('#result');
 
 const carousel = document.querySelector("#demos");
+const carousel_items = Array.from(document.getElementsByClassName('item'));
+const carousel_inners = Array.from(document.getElementsByClassName('item'));
+const pulsing_containers = Array.from(document.getElementsByClassName('pulse'))
+const pulsing_circles = Array.from(document.querySelectorAll('circle'))
 
 document.querySelector('body').style.height = `${window.innerHeight}px`
 
@@ -112,6 +116,9 @@ function phase1_hideGiraffeAndMoveSearchbarUp() {
 
 function phase2_showCarouselAndPopupGiraffe() {
   document.querySelector('#demos').style.opacity = "1";
+  document.querySelector('.pac-container').style.marginTop = "-5px";
+  document.querySelector('.pac-container').style.backgroundColor = "white";
+
   setTimeout(function() {
     // giraffe
     $(':root').css('--giraffe-scale', 'scale(1)');

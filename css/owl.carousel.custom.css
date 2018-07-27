@@ -69,7 +69,11 @@ svg g {
 }
 
 .celsius-day {
-  font-size: 4rem
+  font-size: 4rem;
+}
+
+.celsius-night {
+  float: right
 }
 
 .other-details {
@@ -101,6 +105,19 @@ svg g {
   margin-bottom: -8px;
 }
 
+.fade-in {
+  animation: fade-in 1s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media only screen and (max-width: 400px) {
   .celsius-day {
     font-size: 3rem;
@@ -113,5 +130,11 @@ svg g {
 @media only screen and (min-width: 500px, max-width: 600px) {
   .details {
     margin: 0 20% 0 20%;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  .celsius-night {
+    transform: translateY(-5px);
   }
 }

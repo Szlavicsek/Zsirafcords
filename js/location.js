@@ -40,21 +40,31 @@ function codeAddress() {
         url: `https://api.darksky.net/forecast/7785c047482aadebef9226ce3e1340aa/${lat},${lng}?lang=hu&units=si&exclude=minutely,hourly,alerts,flags`,
         dataType: 'jsonp',
         beforeSend: () => {
-          Array.from(document.getElementsByClassName('pulse')).forEach(pulse => pulse.style.display = "block")
-          Array.from(document.querySelectorAll('circle')).forEach(circle => circle.classList.add("pulsing-animation-active"))
+          pulsing_containers.forEach(pulse => pulse.style.display = "block")
+          pulsing_containers.forEach(pulse => pulse.style.opacity = "1")
+          pulsing_circles.forEach(circle => circle.classList.add("pulsing-animation-active"))
         },
         success: (res) => {
+
           if (!carousel.classList.contains("active")) {
             carousel.classList.add("active");
             phase1_hideGiraffeAndMoveSearchbarUp();
             setTimeout(phase2_showCarouselAndPopupGiraffe, 1000);
             paintCarouselItem(res);
           } else {
-            paintCarouselItem(res);
+            paintCarouselItem(res)
+            $(".owl-carousel").trigger("to.owl.carousel", [0, 500, true]);
+            carousel_inners[0].classList.add("fade-in");
+            setTimeout(function() {
+              carousel_inners[0].classList.remove("fade-in");
+            }, 1000)
           }
           setTimeout(function() {
-            Array.from(document.querySelectorAll('circle')).forEach(circle => circle.classList.remove("pulsing-animation-active"));
-            Array.from(document.getElementsByClassName('pulse')).forEach(pulse => pulse.style.display = "none")
+            pulsing_containers.forEach(pulse => pulse.style.opacity = "0")
+            setTimeout(function() {
+              pulsing_circles.forEach(circle => circle.classList.remove("pulsing-animation-active"));
+              pulsing_containers.forEach(pulse => pulse.style.display = "none")
+            }, 1000)
           }, 1000)
         },
         error: ((err) => {
@@ -70,12 +80,12 @@ function codeAddress() {
       })
     } else {
       searchbar.style.border = "2px solid red";
-      document.querySelector('.error_message').innerText = `Csodálatos keresés volt, de nem találtam ${input_field.value} nevű helyet. (${status})`;
-      error_container.style.top = "0px";
+      document.querySelector('.error_message').innerText = `Csodálatos keresés volt, de nem találtam ${input_field.value} nevű helyet.`;
+      error_container.style.transform = "translateY(0%)";
       input_field.select();
       setTimeout(function() {
         searchbar.style.border = "0";
-        error_container.style.top = "-30px"
+        error_container.style.transform = "translateY(-100%)"
       }, 3000)
     }
   });
@@ -150,7 +160,7 @@ function getIcon(day) {
 
 // UI painter
 function paintCarouselItem(data) {
-  const carousel_items = Array.from(document.getElementsByClassName('item'))
+
   carousel_items.forEach((item, index) => {
     item.innerHTML =
       `
@@ -164,7 +174,9 @@ function paintCarouselItem(data) {
     <div class="details">
       <div class="celsius">
         <div class="celsius-day"><span>${Math.round(data.daily.data[index].temperatureHigh)}</span>°C</div>
-        <p class="celsius-night">Este: <span>${Math.round(data.daily.data[index].temperatureLow)}</span>°C</p>
+        <p class="celsius-night"> Este:
+          <span>${Math.round(data.daily.data[index].temperatureLow)}</span>°C
+        </p>
       </div>
       <div class="other-details">
         <div class="detail-icons">
