@@ -161,5 +161,9 @@ search_trigger.addEventListener("click", function() {
   }
 });
 
+window.addEventListener("resize", function() {
+  document.querySelector('body').style.height = `${window.innerHeight}px`
+})
+
 // init popup
 phase0_showLandingPage()
