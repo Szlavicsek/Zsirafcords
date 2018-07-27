@@ -168,4 +168,7 @@ window.addEventListener("resize", function() {
 })
 
 // init popup
-phase0_showLandingPage()
+$(document).ready(function() {
+  phase0_showLandingPage();
+  runClouds()
+});

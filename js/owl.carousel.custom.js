@@ -23,8 +23,15 @@ $(document).ready(function() {
       }
     }
   });
-})
-
+});
+$('.owl-carousel').on('mousewheel', '.owl-stage', function(e) {
+  if (e.deltaY > 0) {
+    $('.owl-carousel').trigger('next.owl');
+  } else {
+    $('.owl-carousel').trigger('prev.owl');
+  }
+  e.preventDefault();
+});
 
 // animation: scroll 10s linear infinite
 function randomIntFromInterval(min, max) {
@@ -44,4 +51,3 @@ function runClouds() {
     cloud.style.animation = `scroll ${randomIntFromInterval(10, 40)}s linear infinite`
   })
 };
-runClouds()
