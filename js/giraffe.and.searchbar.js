@@ -162,7 +162,7 @@ search_trigger.addEventListener("click", function() {
 });
 
 window.addEventListener("resize", function() {
-  if (window.innerHeight < 300) {
+  if (window.innerHeight > 300) {
     document.querySelector('body').style.height = `${window.innerHeight}px`
   }
 })
