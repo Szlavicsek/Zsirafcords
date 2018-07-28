@@ -68,6 +68,8 @@ function phase0_showLandingPage() {
     giraffe_horn2.classList.remove("giraffe-horn2-popup");
     giraffe_horn1.classList.add("horn-loop");
     giraffe_horn2.classList.add("horn-loop");
+
+    document.querySelector('.error_container').style.transition = "transform 0.5s"
   }, 1100);
 };
 
@@ -150,7 +152,7 @@ function phase2_showCarouselAndPopupGiraffe() {
       giraffe_horn1.classList.add("horn-loop");
       giraffe_horn2.classList.add("horn-loop");
     }, 1100);
-  }, 500)
+  }, 500);
 }
 
 // EVENT LISTENERS
